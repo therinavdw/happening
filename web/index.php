@@ -49,6 +49,7 @@
     {
         $photo = new Photo();
         
+        $photo->user_id = $request->request->get('user_id');
         $photo->image = $request->request->get('image');
         $photo->latitude = $request->request->get('latitude');
         $photo->longitude = $request->request->get('longitude');
