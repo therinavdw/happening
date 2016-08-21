@@ -1,9 +1,12 @@
 <?php
 //create functions to get data
-
+        $username="b8913f208f01f3";
+        $password="db409449";
+        $database="heroku_6bf37834930fbb5";
+        $host="us-cdbr-iron-east-04.cleardb.net";
     function photos_index()
     {
-     $pdo = new PDO("mysql:host=localhost;dbname=Photos",'root','mysql');  
+     $pdo = new PDO("mysql://b8913f208f01f3:db409449@us-cdbr-iron-east-04.cleardb.net/heroku_6bf37834930fbb5?reconnect=true");  
         $stmt= $pdo->query("SELECT * FROM photoUpload ");
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
@@ -28,7 +31,7 @@
 
         function photos_show($id)
            {
-               $pdo = new PDO("mysql:host=localhost;dbname=Photos",'root','mysql');  
+                $pdo = new PDO("mysql://b8913f208f01f3:db409449@us-cdbr-iron-east-04.cleardb.net/heroku_6bf37834930fbb5?reconnect=true"); 
                $stmt= $pdo->query("SELECT * FROM photoUpload WHERE id = ".$id.";");
                $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -47,7 +50,7 @@
 
     function photos_add($photo)
     {
-        $pdo = new PDO("mysql:host=localhost;dbname=Photos",'root','mysql');  
+         $pdo = new PDO("mysql://b8913f208f01f3:db409449@us-cdbr-iron-east-04.cleardb.net/heroku_6bf37834930fbb5?reconnect=true");  
         $stmt->bindParam(':user_id',$photo->name,PDO::PARAM_INT);
         $stmt->bindParam(':image',$photo->image,PDO::PARAM_STR);
         $stmt->bindParam(':latitude',$photo->latitude,PDO::PARAM_STR);
