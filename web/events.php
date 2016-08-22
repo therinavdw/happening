@@ -7,7 +7,7 @@
     function photos_index()
     {
      $pdo = new PDO("mysql:happening-app.herokuapp.com",'b60bcff3aa35e3','db409449');  
-        $stmt= $pdo->query("SELECT * FROM photoUpload ");
+        $stmt= $pdo->query("SELECT * FROM photoupload ");
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         $photos = array();
@@ -32,7 +32,7 @@
         function photos_show($id)
            {
                 $pdo = new PDO("mysql:host=happening-app.herokuapp.com;dbname=heroku_6bf37834930fbb5",'b60bcff3aa35e3','db409449'); 
-               $stmt= $pdo->query("SELECT * FROM photoUpload WHERE id = ".$id.";");
+               $stmt= $pdo->query("SELECT * FROM photoupload WHERE id = ".$id.";");
                $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                $photo = new Photo();
@@ -51,7 +51,7 @@
     function photos_add($photo)
     {
          $pdo = new PDO("mysql:happening-app.herokuapp.com;dbname=heroku_6bf37834930fbb5",'b60bcff3aa35e3','db409449');
-         $stmt= $pdo->prepare("INSERT INTO photoUpload (user_id,image,latitude,longitude,event) VALUES (:user_id,:image,:latitude,:longitude,:event);");
+         $stmt= $pdo->prepare("INSERT INTO photoupload (user_id,image,latitude,longitude,event) VALUES (:user_id,:image,:latitude,:longitude,:event);");
         
    
         $stmt->bindParam(':user_id',$photo->user_id,PDO::PARAM_INT);
