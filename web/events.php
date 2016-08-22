@@ -7,8 +7,11 @@
 
     function photos_index()
     {
-     $pdo = new PDO("mysql:host=$host;dbname=$database",$username,$password);  
-        $stmt= $pdo->query("SELECT * FROM photoupload ");
+        global $username, $password, $database, $host;
+
+        
+        $pdo = new PDO("mysql:host=$host;dbname=$database",$username,$password);  
+        $stmt= $pdo->query("SELECT * FROM photoupload;");
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         $photos = array();
@@ -32,6 +35,7 @@
 
         function photos_show($id)
            {
+                 global $username, $password, $database, $host;
                 $pdo = new PDO("mysql:host=$host;dbname=$database",$username,$password); 
                $stmt= $pdo->query("SELECT * FROM photoupload WHERE id = ".$id.";");
                $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -51,6 +55,7 @@
 
     function photos_add($photo)
     {
+         global $username, $password, $database, $host;
          $pdo = new PDO("mysql:host=$host;dbname=$database",$username,$password);
          $stmt= $pdo->prepare("INSERT INTO photoupload (user_id,image,latitude,longitude,event) VALUES (:user_id,:image,:latitude,:longitude,:event);");
         
