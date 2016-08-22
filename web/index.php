@@ -28,8 +28,8 @@
     //app,verb,url expexted
     $app->get('/', function()
     {
-         return json_encode("Welcome to the digital Classroom");    
-             
+         return json_encode("Welcome to Happening");    
+         return json_encode (photos_index());
     });
     
      //show all photos
