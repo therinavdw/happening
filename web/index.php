@@ -44,6 +44,10 @@
              return new Response('Unauthorized', 401);
          } 
      });
+    $app->get('/users/{id}', function($id)
+    {
+        return json_encode(users_show($id));
+    });
 
     //app,verb,url expexted
     $app->get('/', function()
