@@ -25,6 +25,25 @@
         }
     });
 
+//login
+    $app->post('/users',function(Request $request)
+     {
+         $username= $request->request->get('username');
+         $password = $request->request->get('password');
+         
+         $user_id = authenticate($username,$password);
+         
+         if ($user_id != null)
+         {
+             
+            return json_encode(users_show($user_id));
+             
+         }else
+         {
+             return new Response('Unauthorized', 401);
+         } 
+     });
+
     //app,verb,url expexted
     $app->get('/', function()
     {
