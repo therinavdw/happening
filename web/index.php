@@ -1,6 +1,7 @@
 <?php
     require_once '../vendor/autoload.php';
     require_once 'events.php';
+   require_once 'users.php';
     header("Access-Control-Allow-Origin: *");
 
 // Silex support for accessing the HTTP Request and Response
